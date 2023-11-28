@@ -1,0 +1,13 @@
+<!-- cart.component.html -->
+
+<div class="cart-window" *ngIf="isCartOpen">
+  <h5>Shopping Cart</h5>
+  <ul>
+    <li *ngFor="let item of cart">
+      {{ item.title }} - ${{ item.price }}
+      <button (click)="removeFromCart(item)">Remove</button>
+    </li>
+  </ul>
+  <!-- <button (click)="proceedToPayment()">Proceed to Payment</button>
+  <button (click)="closeCart()">Close</button> -->
+</div>

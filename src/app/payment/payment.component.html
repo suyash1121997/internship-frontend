@@ -1,0 +1,54 @@
+<section class="vh-100 section-bg">
+    <div class="container my-4">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+              <h2 class="card-title">Secure Payment</h2>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="paymentForm" (ngSubmit)="makePayment()">
+                <div class="form-group">
+                  <label for="cardNumber">Card Number</label>
+                  <input type="text" id="cardNumber" class="form-control" formControlName="cardNumber">
+                  <div *ngIf="paymentForm.get('cardNumber')?.hasError('pattern')">
+                    <div class="text-danger">Please enter a 16-digit card number (numbers only).</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="expiration">Expiration Date</label>
+                  <input #datepicker type="text" id="expiryDate" class="form-control" formControlName="expiryDate" bsDatepicker>
+                  <div *ngIf="paymentForm.get('expirationDate')?.hasError('required')">
+                    <div class="text-danger">Expiration date is required.</div>
+                  </div>
+                </div>
+                  <div class="form-group col-md-6">
+                    <label for="cvv">CVV</label>
+                    <input type="number" id="cvv" class="form-control" formControlName = "cvv" (focus)="cvvFieldTouched = true"
+                    (blur)="cvvFieldTouched = false">
+                    <div *ngIf="cvvFieldTouched && paymentForm.get('cvv')?.invalid">
+                      <div class="text-danger">CVV is required.</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="nameOnCard">Name on Card</label>
+                  <input type="text" id="nameOnCard" class="form-control" formControlName="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="amount">Amount</label>
+                  <input type="text" id="amount" class="form-control"  value="{{amount}}" disabled>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" [disabled]="processingPayment || paymentForm.invalid">
+                  {{ processingPayment ? 'Processing...' : 'Pay Now' }}
+                </button>
+              </form>
+              <div *ngIf="paymentResult" class="alert alert-{{ paymentResult === 'success' ? 'success' : 'danger' }}">
+                {{ paymentResult === 'success' ? 'Payment successful' : errorMessage }}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  

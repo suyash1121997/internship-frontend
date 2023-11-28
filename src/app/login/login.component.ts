@@ -31,7 +31,10 @@ export class LoginComponent {
         this.loginMode = this.loginForm.value.loginMode;
       if(this.loginMode == "STUDENT") {
         console.log("here1")
-        this.router.navigate(['signup']);
+        this.router.navigate(['student'], { queryParams: { email: this.loginForm.value.email } });
+      }
+      else {
+        this.router.navigate(['mentor']);
       }
       }
       this.loginError = data.message

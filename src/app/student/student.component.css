@@ -1,0 +1,70 @@
+.cart-icon {
+    position: relative;
+    cursor: pointer;
+    margin-right: 15px;
+  }
+  
+  .badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .navbar {
+    background-color: rgba(29, 17, 117, 0.8); /* Add transparency if needed */
+  }
+  body {
+    background-image: url('src/assets/internship-image.jpg');
+    background-size: cover; /* Adjust the size as needed */
+    background-repeat: no-repeat; /* Prevent image from repeating */
+    background-attachment: fixed; /* Keeps the image fixed while scrolling */
+  }
+
+  .card {
+    background-color: #f7f7f7; /* Change to your desired color or use an image */
+  }
+  /* Add custom styles to the block */
+.block {
+  background-color: #f5f5f5; /* Change the background color */
+  padding: 20px; /* Add padding for spacing */
+  border: 1px solid #ccc; /* Add a border for separation */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+/* Style the card title and text */
+.card-title {
+  font-size: 20px; /* Change the font size for the title */
+  color: #333; /* Change the text color */
+}
+
+.card-text {
+  color: #6c2f40; /* Change the text color */
+}
+
+/* Style the buttons */
+.btn-primary {
+  background-color: #007bff; /* Change the background color for the primary button */
+  color: #fff; /* Change the text color */
+  border: none; /* Remove the border */
+}
+
+.btn-success {
+  background-color: #28a745; /* Change the background color for the success button */
+  color: #fff; /* Change the text color */
+  border: none; /* Remove the border */
+}
+
+/* Style the pagination links */
+.page-item {
+  background-color: #fff; /* Change the background color for pagination links */
+  border: 1px solid #ccc; /* Add a border */
+}
+
+.page-link {
+  color: #007bff; /* Change the link color */
+}
+
+/* Style the active page link */
+.page-item.active .page-link {
+  background-color: #007bff; /* Change the background color for the active page link */
+  color: #fff; /* Change the text color */
+}

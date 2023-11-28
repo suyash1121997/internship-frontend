@@ -1,1 +1,66 @@
-<p>student works!</p>
+<section class="vh-100 section-bg">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="#">Internship Platform</a>
+      <div class="ml-auto">
+        <div class="user-info">
+          <div class="profile-dropdown">
+            <button class="profile-button" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user"></i>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="userDropdown">
+              <div class="user-info-block">
+                <h6 class="dropdown-header">Welcome</h6>
+                <a class="dropdown-item" href="login">Update Profile</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container my-4">
+          <!-- ... existing code ... -->
+        
+          <div class="cart-icon" (click)="openCartModal()">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="badge badge-primary">{{ cart.length }}</span>
+          </div>
+        
+          <!-- Include CartComponent and pass cartItems as input -->
+          <app-cart [isCartOpen]="isCartOpen" [cartItems]="cart"></app-cart>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <div class="container my-4">
+    <div class="row mb-3">
+      <div class="col-6">
+        <input type="text" [(ngModel)]="searchQuery" (input)="filterInternships()" class="form-control"
+          placeholder="Search internships">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12" *ngFor="let internship of pagedInternships">
+        <div class="card mb-3 block"> <!-- Apply the 'block' class for styling -->
+          <div class="card-body">
+            <h5 class="card-title">{{ internship.title }}</h5>
+            <p class="card-text">{{ internship.description }}</p>
+            <p class="text-muted">Location: {{ internship.location }}</p>
+            <p class="text-muted">Duration: {{ internship.duration }}</p>
+            <p class="text-muted">Price: ${{ internship.price }}</p>
+            <p class="text-muted">Requirements: {{ internship.requirements }}</p>
+            <button class="btn btn-primary" (click)="applyForInternship(internship)">Apply</button>
+            <button class="btn btn-success" (click)="addInternship(internship)">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ul class="pagination">
+      <li class="page-item" (click)="previousPage()"><a class="page-link">Previous</a></li>
+      <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+        <a class="page-link" (click)="setPage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" (click)="nextPage()"><a class="page-link">Next</a></li>
+    </ul>
+  </div>
+</section>
